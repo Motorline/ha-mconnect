@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Haga clic en el enlace para autenticarse con su cuenta MCONNECT. Puede usar email, Google, Facebook o Apple."
+      },
+      "auth": {
+        "title": "Esperando autenticación",
+        "description": "Complete el inicio de sesión en el sitio web de MCONNECT y seleccione su hogar."
+      },
+      "finish": {
+        "title": "Configurado",
+        "description": "Su hogar MCONNECT ha sido configurado correctamente."
+      },
+      "reauth_confirm": {
+        "title": "Re-autenticar MCONNECT",
+        "description": "Su sesión MCONNECT ha expirado. Haga clic en el enlace para autenticarse de nuevo."
+      }
+    },
+    "abort": {
+      "already_configured": "Este hogar ya está configurado.",
+      "auth_failed": "La autenticación falló. Por favor, inténtelo de nuevo.",
+      "unknown": "Ocurrió un error inesperado.",
+      "reauth_successful": "Re-autenticación exitosa.",
+      "token_limit_reached": "Se alcanzó el número máximo de tokens de acceso personal. Revoque un token existente en la configuración de su cuenta MCONNECT.",
+      "token_revoked": "Su token de acceso de Home Assistant ha sido revocado. Elimine la integración y agréguela de nuevo.",
+      "cannot_connect": "No se pudo conectar a los servidores MCONNECT. Verifique su conexión a internet."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "La autenticación con MCONNECT falló. Por favor, re-autentíquese."
+    },
+    "cannot_connect": {
+      "message": "No se pudo conectar a los servidores MCONNECT. Verifique su conexión a internet."
+    },
+    "access_denied": {
+      "message": "No tiene acceso a este hogar en este momento. El acceso puede estar restringido a ciertos horarios o días."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Control"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "brightness": {
+        "name": "Brillo"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Cerradura"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "level": {
+        "name": "Velocidad"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Nivel"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Estado"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "mode": {
+        "name": "Modo"
+      },
+      "level": {
+        "name": "Temperatura"
+      }
+    }
+  }
+}

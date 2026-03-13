@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Cliquez sur le lien pour vous authentifier avec votre compte MCONNECT. Vous pouvez utiliser email, Google, Facebook ou Apple."
+      },
+      "auth": {
+        "title": "En attente d'authentification",
+        "description": "Connectez-vous sur le site MCONNECT et sélectionnez votre maison."
+      },
+      "finish": {
+        "title": "Configuré",
+        "description": "Votre maison MCONNECT a été configurée avec succès."
+      },
+      "reauth_confirm": {
+        "title": "Ré-authentifier MCONNECT",
+        "description": "Votre session MCONNECT a expiré. Cliquez sur le lien pour vous authentifier à nouveau."
+      }
+    },
+    "abort": {
+      "already_configured": "Cette maison est déjà configurée.",
+      "auth_failed": "L'authentification a échoué. Veuillez réessayer.",
+      "unknown": "Une erreur inattendue s'est produite.",
+      "reauth_successful": "Ré-authentification réussie.",
+      "token_limit_reached": "Nombre maximum de jetons d'accès personnel atteint. Veuillez révoquer un jeton existant dans les paramètres de votre compte MCONNECT.",
+      "token_revoked": "Votre jeton d'accès Home Assistant a été révoqué. Supprimez l'intégration et ajoutez-la à nouveau.",
+      "cannot_connect": "Impossible de se connecter aux serveurs MCONNECT. Vérifiez votre connexion internet."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "L'authentification avec MCONNECT a échoué. Veuillez vous ré-authentifier."
+    },
+    "cannot_connect": {
+      "message": "Impossible de se connecter aux serveurs MCONNECT. Vérifiez votre connexion internet."
+    },
+    "access_denied": {
+      "message": "Vous n'avez pas accès à cette maison pour le moment. L'accès peut être limité à certaines heures ou jours."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Commande"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Interrupteur"
+      },
+      "brightness": {
+        "name": "Luminosité"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Interrupteur"
+      },
+      "state": {
+        "name": "État"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Serrure"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Interrupteur"
+      },
+      "level": {
+        "name": "Vitesse"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Niveau"
+      },
+      "state": {
+        "name": "État"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "État"
+      },
+      "state": {
+        "name": "État"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Interrupteur"
+      },
+      "mode": {
+        "name": "Mode"
+      },
+      "level": {
+        "name": "Température"
+      }
+    }
+  }
+}

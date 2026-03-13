@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Clique no link para autenticar com a sua conta MCONNECT. Pode usar email, Google, Facebook ou Apple."
+      },
+      "auth": {
+        "title": "A aguardar autenticação",
+        "description": "Complete o login no site MCONNECT e selecione a sua casa."
+      },
+      "finish": {
+        "title": "Configurado",
+        "description": "A sua casa MCONNECT foi configurada com sucesso."
+      },
+      "reauth_confirm": {
+        "title": "Re-autenticar MCONNECT",
+        "description": "A sua sessão MCONNECT expirou. Clique no link para autenticar novamente."
+      }
+    },
+    "abort": {
+      "already_configured": "Esta casa já está configurada.",
+      "auth_failed": "Autenticação falhou. Por favor tente novamente.",
+      "unknown": "Ocorreu um erro inesperado.",
+      "reauth_successful": "Re-autenticação com sucesso.",
+      "token_limit_reached": "Número máximo de tokens de acesso pessoal atingido. Revogue um token existente nas definições da sua conta MCONNECT.",
+      "token_revoked": "O seu token de acesso do Home Assistant foi revogado. Remova a integração e adicione novamente.",
+      "cannot_connect": "Não foi possível ligar aos servidores MCONNECT. Verifique a sua ligação à internet."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Autenticação com MCONNECT falhou. Por favor re-autentique."
+    },
+    "cannot_connect": {
+      "message": "Não foi possível ligar aos servidores MCONNECT. Verifique a sua ligação à internet."
+    },
+    "access_denied": {
+      "message": "Não tem acesso a esta casa neste momento. O acesso pode estar restrito a determinados horários ou dias."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Controlo"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "brightness": {
+        "name": "Brilho"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Fechadura"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "level": {
+        "name": "Velocidade"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Nível"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Estado"
+      },
+      "state": {
+        "name": "Estado"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Interruptor"
+      },
+      "mode": {
+        "name": "Modo"
+      },
+      "level": {
+        "name": "Temperatura"
+      }
+    }
+  }
+}

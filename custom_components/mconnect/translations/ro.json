@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Faceți clic pe link pentru a vă autentifica cu contul MCONNECT. Puteți folosi email, Google, Facebook sau Apple."
+      },
+      "auth": {
+        "title": "Se așteaptă autentificarea",
+        "description": "Finalizați autentificarea pe site-ul MCONNECT și selectați casa dvs."
+      },
+      "finish": {
+        "title": "Configurat",
+        "description": "Casa MCONNECT a fost configurată cu succes."
+      },
+      "reauth_confirm": {
+        "title": "Re-autentificare MCONNECT",
+        "description": "Sesiunea MCONNECT a expirat. Faceți clic pe link pentru a vă autentifica din nou."
+      }
+    },
+    "abort": {
+      "already_configured": "Această casă este deja configurată.",
+      "auth_failed": "Autentificarea a eșuat. Vă rugăm să încercați din nou.",
+      "unknown": "A apărut o eroare neașteptată.",
+      "reauth_successful": "Re-autentificare reușită.",
+      "token_limit_reached": "Numărul maxim de tokenuri de acces personal a fost atins. Revocați un token existent din setările contului MCONNECT.",
+      "token_revoked": "Tokenul de acces Home Assistant a fost revocat. Eliminați integrarea și adăugați-o din nou.",
+      "cannot_connect": "Nu s-a putut conecta la serverele MCONNECT. Verificați conexiunea la internet."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Autentificarea cu MCONNECT a eșuat. Vă rugăm să vă re-autentificați."
+    },
+    "cannot_connect": {
+      "message": "Nu s-a putut conecta la serverele MCONNECT. Verificați conexiunea la internet."
+    },
+    "access_denied": {
+      "message": "Nu aveți acces la această casă în acest moment. Accesul poate fi restricționat la anumite ore sau zile."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Control"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Întrerupător"
+      },
+      "brightness": {
+        "name": "Luminozitate"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Întrerupător"
+      },
+      "state": {
+        "name": "Stare"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Încuietoare"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Întrerupător"
+      },
+      "level": {
+        "name": "Viteză"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Nivel"
+      },
+      "state": {
+        "name": "Stare"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Stare"
+      },
+      "state": {
+        "name": "Stare"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Întrerupător"
+      },
+      "mode": {
+        "name": "Mod"
+      },
+      "level": {
+        "name": "Temperatură"
+      }
+    }
+  }
+}

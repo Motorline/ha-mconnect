@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Kliknij link, aby uwierzytelnić się na koncie MCONNECT. Możesz użyć e-mail, Google, Facebook lub Apple."
+      },
+      "auth": {
+        "title": "Oczekiwanie na uwierzytelnienie",
+        "description": "Zaloguj się na stronie MCONNECT i wybierz swój dom."
+      },
+      "finish": {
+        "title": "Skonfigurowano",
+        "description": "Twój dom MCONNECT został pomyślnie skonfigurowany."
+      },
+      "reauth_confirm": {
+        "title": "Ponowne uwierzytelnienie MCONNECT",
+        "description": "Sesja MCONNECT wygasła. Kliknij link, aby uwierzytelnić się ponownie."
+      }
+    },
+    "abort": {
+      "already_configured": "Ten dom jest już skonfigurowany.",
+      "auth_failed": "Uwierzytelnienie nie powiodło się. Spróbuj ponownie.",
+      "unknown": "Wystąpił nieoczekiwany błąd.",
+      "reauth_successful": "Ponowne uwierzytelnienie zakończone sukcesem.",
+      "token_limit_reached": "Osiągnięto maksymalną liczbę osobistych tokenów dostępu. Unieważnij istniejący token w ustawieniach konta MCONNECT.",
+      "token_revoked": "Twój token dostępu Home Assistant został unieważniony. Usuń integrację i dodaj ją ponownie.",
+      "cannot_connect": "Nie można połączyć się z serwerami MCONNECT. Sprawdź połączenie internetowe."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Uwierzytelnienie z MCONNECT nie powiodło się. Proszę uwierzytelnić się ponownie."
+    },
+    "cannot_connect": {
+      "message": "Nie można połączyć się z serwerami MCONNECT. Sprawdź połączenie internetowe."
+    },
+    "access_denied": {
+      "message": "Nie masz teraz dostępu do tego domu. Dostęp może być ograniczony do określonych godzin lub dni."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Sterowanie"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Przełącznik"
+      },
+      "brightness": {
+        "name": "Jasność"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Przełącznik"
+      },
+      "state": {
+        "name": "Stan"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Zamek"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Przełącznik"
+      },
+      "level": {
+        "name": "Prędkość"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Poziom"
+      },
+      "state": {
+        "name": "Stan"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Stan"
+      },
+      "state": {
+        "name": "Stan"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Przełącznik"
+      },
+      "mode": {
+        "name": "Tryb"
+      },
+      "level": {
+        "name": "Temperatura"
+      }
+    }
+  }
+}

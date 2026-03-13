@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Kattintson a linkre az MCONNECT fiókjával történő hitelesítéshez. Használhat e-mailt, Google-t, Facebookot vagy Apple-t."
+      },
+      "auth": {
+        "title": "Hitelesítésre várakozás",
+        "description": "Jelentkezzen be az MCONNECT weboldalon és válassza ki otthonát."
+      },
+      "finish": {
+        "title": "Beállítva",
+        "description": "Az MCONNECT otthon sikeresen beállítva."
+      },
+      "reauth_confirm": {
+        "title": "MCONNECT újrahitelesítés",
+        "description": "Az MCONNECT munkamenet lejárt. Kattintson a linkre az újrahitelesítéshez."
+      }
+    },
+    "abort": {
+      "already_configured": "Ez az otthon már be van állítva.",
+      "auth_failed": "A hitelesítés sikertelen. Kérjük, próbálja újra.",
+      "unknown": "Váratlan hiba történt.",
+      "reauth_successful": "Újrahitelesítés sikeres.",
+      "token_limit_reached": "Elérte a személyes hozzáférési tokenek maximális számát. Kérjük, vonja vissza egy meglévő tokent az MCONNECT fiók beállításaiban.",
+      "token_revoked": "A Home Assistant hozzáférési tokenje visszavonásra került. Távolítsa el az integrációt és adja hozzá újra.",
+      "cannot_connect": "Nem sikerült csatlakozni az MCONNECT szerverekhez. Ellenőrizze az internetkapcsolatot."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Az MCONNECT hitelesítés sikertelen. Kérjük, hitelesítse magát újra."
+    },
+    "cannot_connect": {
+      "message": "Nem sikerült csatlakozni az MCONNECT szerverekhez. Ellenőrizze az internetkapcsolatot."
+    },
+    "access_denied": {
+      "message": "Jelenleg nincs hozzáférése ehhez az otthonhoz. A hozzáférés bizonyos órákra vagy napokra korlátozható."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Vezérlés"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Kapcsoló"
+      },
+      "brightness": {
+        "name": "Fényerő"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Kapcsoló"
+      },
+      "state": {
+        "name": "Állapot"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Zár"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Kapcsoló"
+      },
+      "level": {
+        "name": "Sebesség"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Szint"
+      },
+      "state": {
+        "name": "Állapot"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Állapot"
+      },
+      "state": {
+        "name": "Állapot"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Kapcsoló"
+      },
+      "mode": {
+        "name": "Üzemmód"
+      },
+      "level": {
+        "name": "Hőmérséklet"
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Click the link to authenticate with your MCONNECT account. You can use email, Google, Facebook, or Apple."
+      },
+      "auth": {
+        "title": "Waiting for authentication",
+        "description": "Complete the login on the MCONNECT website and select your home."
+      },
+      "finish": {
+        "title": "Configured",
+        "description": "Your MCONNECT home has been configured successfully."
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate MCONNECT",
+        "description": "Your MCONNECT session has expired. Click the link to authenticate again."
+      }
+    },
+    "abort": {
+      "already_configured": "This home is already configured.",
+      "auth_failed": "Authentication failed. Please try again.",
+      "unknown": "An unexpected error occurred.",
+      "reauth_successful": "Re-authentication successful.",
+      "token_limit_reached": "Maximum number of personal access tokens reached. Please revoke an existing token in your MCONNECT account settings.",
+      "token_revoked": "Your Home Assistant access token has been revoked. Please remove the integration and add it again.",
+      "cannot_connect": "Unable to connect to MCONNECT servers. Please check your internet connection."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Authentication with MCONNECT failed. Please re-authenticate."
+    },
+    "cannot_connect": {
+      "message": "Unable to connect to MCONNECT servers. Please check your internet connection."
+    },
+    "access_denied": {
+      "message": "You do not have access to this home at this time. Access may be restricted to certain hours or days."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Control"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Switch"
+      },
+      "brightness": {
+        "name": "Brightness"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Switch"
+      },
+      "state": {
+        "name": "State"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Lock"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Switch"
+      },
+      "level": {
+        "name": "Speed"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Level"
+      },
+      "state": {
+        "name": "State"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "State"
+      },
+      "state": {
+        "name": "State"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Switch"
+      },
+      "mode": {
+        "name": "Mode"
+      },
+      "level": {
+        "name": "Temperature"
+      }
+    }
+  }
+}

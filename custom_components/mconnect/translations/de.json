@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Klicken Sie auf den Link, um sich mit Ihrem MCONNECT-Konto zu authentifizieren. Sie können E-Mail, Google, Facebook oder Apple verwenden."
+      },
+      "auth": {
+        "title": "Warte auf Authentifizierung",
+        "description": "Melden Sie sich auf der MCONNECT-Website an und wählen Sie Ihr Zuhause aus."
+      },
+      "finish": {
+        "title": "Konfiguriert",
+        "description": "Ihr MCONNECT-Zuhause wurde erfolgreich konfiguriert."
+      },
+      "reauth_confirm": {
+        "title": "MCONNECT erneut authentifizieren",
+        "description": "Ihre MCONNECT-Sitzung ist abgelaufen. Klicken Sie auf den Link, um sich erneut zu authentifizieren."
+      }
+    },
+    "abort": {
+      "already_configured": "Dieses Zuhause ist bereits konfiguriert.",
+      "auth_failed": "Authentifizierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "unknown": "Ein unerwarteter Fehler ist aufgetreten.",
+      "reauth_successful": "Erneute Authentifizierung erfolgreich.",
+      "token_limit_reached": "Maximale Anzahl persönlicher Zugriffstoken erreicht. Bitte widerrufen Sie einen vorhandenen Token in Ihren MCONNECT-Kontoeinstellungen.",
+      "token_revoked": "Ihr Home Assistant-Zugriffstoken wurde widerrufen. Bitte entfernen Sie die Integration und fügen Sie sie erneut hinzu.",
+      "cannot_connect": "Verbindung zu MCONNECT-Servern nicht möglich. Bitte überprüfen Sie Ihre Internetverbindung."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Authentifizierung mit MCONNECT fehlgeschlagen. Bitte erneut authentifizieren."
+    },
+    "cannot_connect": {
+      "message": "Verbindung zu MCONNECT-Servern nicht möglich. Bitte überprüfen Sie Ihre Internetverbindung."
+    },
+    "access_denied": {
+      "message": "Sie haben derzeit keinen Zugang zu diesem Zuhause. Der Zugang kann auf bestimmte Zeiten oder Tage beschränkt sein."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Steuerung"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Schalter"
+      },
+      "brightness": {
+        "name": "Helligkeit"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Schalter"
+      },
+      "state": {
+        "name": "Zustand"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Schloss"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Schalter"
+      },
+      "level": {
+        "name": "Geschwindigkeit"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Pegel"
+      },
+      "state": {
+        "name": "Zustand"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Zustand"
+      },
+      "state": {
+        "name": "Zustand"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Schalter"
+      },
+      "mode": {
+        "name": "Modus"
+      },
+      "level": {
+        "name": "Temperatur"
+      }
+    }
+  }
+}
