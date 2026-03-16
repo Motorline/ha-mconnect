@@ -351,6 +351,17 @@ DEVICE_TYPE_ICON: dict[str, str] = {
     "devices.types.RF_REMOTE": "mdi:remote",
 }
 
+# ── Shutter modes ─────────────────────────────────────────────────────────
+SHUTTER_MODE_SHUTTER = 0       # Normal shutter (open/close/position)
+SHUTTER_MODE_RELAY = 1         # Two independent relays (switches)
+SHUTTER_MODE_VENETIAN = 2      # Venetian blind (position + tilt/rotation)
+
+# Value IDs used internally by shutter devices (not exposed as entities)
+SHUTTER_CONFIG_VALUE_IDS: set[str] = {
+    "mode", "blind_rotation", "show_mode", "labels",
+    "relay_01", "relay_02", "sensor_open", "sensor_close",
+}
+
 PLATFORMS: list[str] = [
     "cover", "light", "switch", "lock", "sensor",
     "binary_sensor", "scene", "fan", "climate",

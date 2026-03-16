@@ -8,5 +8,5 @@
   "iot_class": "cloud_push",
   "issue_tracker": "https://github.com/Motorline/ha-mconnect/issues",
   "requirements": ["paho-mqtt>=1.6.1"],
-  "version": "26.03.13"
+  "version": "26.03.16"
 }

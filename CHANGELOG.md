@@ -1,5 +1,16 @@
 # Changelog
 
+## 26.03.16 (2026-03-16)
+
+### Shutter mode support
+
+- SHUTTER devices now respect the mode configuration from the MCONNECT app
+- Mode 0 (Shutter): cover with open/close/position, respects `onlyOpenClose` attribute
+- Mode 1 (Relay): two independent switches (relay_01, relay_02) + input binary sensors (sensor_open, sensor_close) with custom labels and visibility
+- Mode 2 (Venetian): cover with tilt control via blind_rotation (open/close/set tilt position)
+- New shared helper module `shutter_helpers.py`
+- Note: changing shutter mode requires a manual integration reload in HA
+
 ## 26.03.13 (2026-03-12)
 
 ### Initial release
