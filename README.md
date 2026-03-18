@@ -89,6 +89,7 @@ This does not affect your MCONNECT account or devices.
 | Issue | Solution |
 |---|---|
 | "Authentication failed" during setup | Ensure you're using the correct MCONNECT account and that your subscription is active |
+| Setup fails on mobile app | Go to **Settings → System → Network** and set your external Home Assistant URL |
 | Devices show as "Unavailable" | Check that the MCONNECT endpoint/hub is online in the MCONNECT app |
 | MQTT disconnects in logs | Normal when access token refreshes — the connection recovers automatically within seconds |
 | Scenes not appearing | New scenes are detected via MQTT push or on the hourly sync — restart the integration to force an immediate refresh |

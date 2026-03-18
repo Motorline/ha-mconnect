@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.03.18 (2026-03-18)
+
+### Fix LINK gate_state parsing
+
+- Mask gate_state value with `0x3F` to extract only the lower 6 bits (actual state), stripping RF information ([#1](https://github.com/Motorline/ha-mconnect/issues/1))
+
 ## 26.03.16 (2026-03-16)
 
 ### Shutter mode support

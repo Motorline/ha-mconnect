@@ -296,7 +296,7 @@ class MConnectCover(MConnectEntity, CoverEntity):
         if val is None:
             return None
         try:
-            return int(val)
+            return int(val) & 0x3F
         except (ValueError, TypeError):
             return None
 
