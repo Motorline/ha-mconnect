@@ -39,8 +39,8 @@ DEVICE_TYPE_PLATFORM: dict[str, str] = {
     "devices.types.MOTION_SENSOR": "binary_sensor",
     "devices.types.ZB_MOTION_SENSOR": "binary_sensor",
     "devices.types.LINK": "cover",
-    "devices.types.RF_CONTROLLER": "switch",
-    "devices.types.RF_REMOTE": "switch",
+    "devices.types.RF_CONTROLLER": "button",
+    "devices.types.RF_REMOTE": "button",
 }
 
 DEVICE_TYPE_IGNORE: set[str] = {"devices.types.ZB_BRIDGE", "devices.types.SCENE"}
@@ -363,6 +363,6 @@ SHUTTER_CONFIG_VALUE_IDS: set[str] = {
 }
 
 PLATFORMS: list[str] = [
-    "cover", "light", "switch", "lock", "sensor",
+    "button", "cover", "light", "switch", "lock", "sensor",
     "binary_sensor", "scene", "fan", "climate",
 ]

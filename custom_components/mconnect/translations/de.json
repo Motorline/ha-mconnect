@@ -100,6 +100,29 @@
       "level": {
         "name": "Temperatur"
       }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Öffnen"
+      },
+      "shutter_stop": {
+        "name": "2 Stopp"
+      },
+      "shutter_close": {
+        "name": "3 Schließen"
+      },
+      "rf_button_1": {
+        "name": "Taste 1"
+      },
+      "rf_button_2": {
+        "name": "Taste 2"
+      },
+      "rf_button_3": {
+        "name": "Taste 3"
+      },
+      "rf_button_4": {
+        "name": "Taste 4"
+      }
     }
   }
 }

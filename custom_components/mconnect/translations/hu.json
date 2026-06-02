@@ -100,6 +100,29 @@
       "level": {
         "name": "Hőmérséklet"
       }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Nyitás"
+      },
+      "shutter_stop": {
+        "name": "2 Stop"
+      },
+      "shutter_close": {
+        "name": "3 Zárás"
+      },
+      "rf_button_1": {
+        "name": "Gomb 1"
+      },
+      "rf_button_2": {
+        "name": "Gomb 2"
+      },
+      "rf_button_3": {
+        "name": "Gomb 3"
+      },
+      "rf_button_4": {
+        "name": "Gomb 4"
+      }
     }
   }
 }

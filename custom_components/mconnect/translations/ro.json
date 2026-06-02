@@ -100,6 +100,29 @@
       "level": {
         "name": "Temperatură"
       }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Deschide"
+      },
+      "shutter_stop": {
+        "name": "2 Oprire"
+      },
+      "shutter_close": {
+        "name": "3 Închide"
+      },
+      "rf_button_1": {
+        "name": "Buton 1"
+      },
+      "rf_button_2": {
+        "name": "Buton 2"
+      },
+      "rf_button_3": {
+        "name": "Buton 3"
+      },
+      "rf_button_4": {
+        "name": "Buton 4"
+      }
     }
   }
 }

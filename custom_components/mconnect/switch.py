@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import logging
 from typing import Any
 
 from homeassistant.components.switch import SwitchDeviceClass, SwitchEntity
@@ -20,8 +19,6 @@ from .const import (
 from .coordinator import MConnectCoordinator
 from .entity import MConnectEntity
 from .shutter_helpers import get_shutter_labels, get_shutter_mode, get_shutter_show_mode
-
-_LOGGER = logging.getLogger(__name__)
 
 PARALLEL_UPDATES = 0
 

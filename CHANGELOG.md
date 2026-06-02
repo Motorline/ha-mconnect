@@ -1,5 +1,14 @@
 # Changelog
 
+## 26.06.02 (2026-06-02)
+
+### MCONNECT Bridge RF emitters support
+
+- RF_CONTROLLER and RF_REMOTE devices now use the **button** platform instead of switch
+- Up to 4 buttons per device based on `mode_channel`; shutter mode exposes Open / Stop / Close
+- Custom button labels from the MCONNECT app are respected
+- Integration available in HACS default catalogue (no custom repository needed)
+
 ## 26.03.18 (2026-03-18)
 
 ### Fix LINK gate_state parsing

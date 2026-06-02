@@ -38,11 +38,13 @@ Home Assistant integration for [Motorline MCONNECT](https://mconnect.pt) — con
 
 ### HACS (recommended)
 
+> [!WARNING]
+> Multiple repositories with similar names exist in HACS. Make sure you select the **official** one published by **motorline**.
+
 1. Open HACS in your Home Assistant
-2. Click **⋮** → **Custom repositories**
-3. Add `https://github.com/Motorline/ha-mconnect` with category **Integration**
-4. Search for **Motorline MCONNECT** and click **Download**
-5. Restart Home Assistant
+2. Search for **MCONNECT**
+3. Select **Motorline MCONNECT** by **Motorline** and click **Download**
+4. Restart Home Assistant
 
 ### Manual
 

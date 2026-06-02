@@ -113,8 +113,6 @@ class MConnectEntity(CoordinatorEntity[MConnectCoordinator]):
 
         identifiers = {(DOMAIN, self._device_id)}
         endpoint_id = self._device_data.get("endpoint_id")
-        if endpoint_id:
-            identifiers.add((DOMAIN, f"endpoint_{endpoint_id}"))
 
         room = self._device_data.get("room") or {}
         suggested_area = room.get("name")
