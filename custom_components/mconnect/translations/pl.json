@@ -122,6 +122,9 @@
       },
       "rf_button_4": {
         "name": "Przycisk 4"
+      },
+      "pedestrian_open": {
+        "name": "Otwarcie dla pieszych"
       }
     }
   }

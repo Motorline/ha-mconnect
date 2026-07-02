@@ -122,6 +122,9 @@
       },
       "rf_button_4": {
         "name": "Buton 4"
+      },
+      "pedestrian_open": {
+        "name": "Deschidere pietonală"
       }
     }
   }
