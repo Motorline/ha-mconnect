@@ -122,6 +122,9 @@
       },
       "rf_button_4": {
         "name": "Botão 4"
+      },
+      "pedestrian_open": {
+        "name": "Abertura pedonal"
       }
     }
   }

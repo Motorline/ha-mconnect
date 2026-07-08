@@ -122,6 +122,9 @@
       },
       "rf_button_4": {
         "name": "Button 4"
+      },
+      "pedestrian_open": {
+        "name": "Pedestrian open"
       }
     }
   }

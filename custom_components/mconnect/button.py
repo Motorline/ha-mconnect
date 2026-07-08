@@ -13,6 +13,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import DEVICE_TYPE_PLATFORM, DOMAIN, VALUE_TYPE_MULTILEVEL
 from .coordinator import MConnectCoordinator
+from .cover import LINK_CMD_PEDESTRIAN_OPEN, _find_link_value_ids
 from .entity import MConnectEntity
 
 PARALLEL_UPDATES = 0
@@ -106,10 +107,25 @@ async def async_setup_entry(
         stale = {c for c in known_ids if c.split("_", 1)[0] not in current_ids}
         known_ids.difference_update(stale)
 
-        new_entities: list[MConnectRfButton] = []
+        new_entities: list[ButtonEntity] = []
 
         for device_id, device in coordinator.data.devices.items():
             dtype = device.get("type", "")
+
+            # LINK gates: expose a pedestrian-open button next to the cover
+            if dtype == "devices.types.LINK":
+                state_vid, _ = _find_link_value_ids(device)
+                if not state_vid:
+                    continue
+                combo = f"{device_id}_{state_vid}_pedestrian"
+                if combo in known_ids:
+                    continue
+                known_ids.add(combo)
+                new_entities.append(
+                    MConnectLinkPedestrianButton(coordinator, device, state_vid)
+                )
+                continue
+
             if DEVICE_TYPE_PLATFORM.get(dtype) != "button":
                 continue
 
@@ -176,3 +192,30 @@ class MConnectRfButton(MConnectEntity, ButtonEntity):
         """Send the RF value for this button position."""
         rf_value = _BUTTON_RF_VALUES[self._button_num - 1]
         await self._send_value(self._value_id, rf_value)
+
+
+class MConnectLinkPedestrianButton(MConnectEntity, ButtonEntity):
+    """Pedestrian-open button for a LINK gate device."""
+
+    def __init__(
+        self,
+        coordinator: MConnectCoordinator,
+        device_data: dict[str, Any],
+        value_id: str,
+    ) -> None:
+        super().__init__(coordinator, device_data, value_id)
+
+        self._attr_unique_id = f"{DOMAIN}_{self._device_id}_{value_id}_pedestrian"
+        # Base class derives name/category/icon from the gate_state value
+        # object (query_only Multilevel) — override for this command button.
+        self._attr_translation_key = "pedestrian_open"
+        # _attr_name must not exist at all, otherwise it takes precedence
+        # over the translation key when HA resolves the entity name.
+        if hasattr(self, "_attr_name"):
+            del self._attr_name
+        self._attr_entity_category = None
+        self._attr_icon = "mdi:walk"
+
+    async def async_press(self) -> None:
+        """Send the pedestrian open command to gate_state."""
+        await self._send_value(self._value_id, LINK_CMD_PEDESTRIAN_OPEN)

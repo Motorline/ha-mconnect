@@ -22,7 +22,7 @@ Home Assistant integration for [Motorline MCONNECT](https://mconnect.pt) — con
 
 | MCONNECT type | HA platform | Features |
 |---|---|---|
-| Gate / Garage / Link | Cover | Open, Close, Stop, Position |
+| Gate / Garage / Link | Cover | Open, Close, Stop, Position; Link also exposes a Pedestrian open button |
 | Shutter / Window / Door | Cover | Open, Close, Stop |
 | Light | Light | On/Off, Brightness |
 | Dimmer | Light | On/Off, Brightness |

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Pedestrian open button for LINK gates
+
+- LINK devices now expose a **Pedestrian open** button entity next to the cover, sending the pedestrian open command (`gate_state = 3`)
+- Translated in all 8 supported languages
+
 ## 26.06.02 (2026-06-02)
 
 ### MCONNECT Bridge RF emitters support

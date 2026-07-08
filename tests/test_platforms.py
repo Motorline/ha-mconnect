@@ -257,6 +257,37 @@ async def test_link_cover_stop_sends_to_gate_state(mock_coordinator):
     )
 
 
+# ── LINK pedestrian button ───────────────────────────────────────────────
+
+
+def test_link_pedestrian_button_creation(mock_coordinator):
+    """Test pedestrian button entity is created for a LINK device."""
+    from custom_components.mconnect.button import MConnectLinkPedestrianButton
+
+    device = MOCK_DEVICES[6]  # LINK device
+    entity = MConnectLinkPedestrianButton(mock_coordinator, device, "gate_state")
+
+    assert entity.unique_id == f"{DOMAIN}_device007_gate_state_pedestrian"
+    assert entity._attr_translation_key == "pedestrian_open"
+    # Command button: must not inherit DIAGNOSTIC category from gate_state
+    assert entity.entity_category is None
+    assert entity.icon == "mdi:walk"
+
+
+async def test_link_pedestrian_button_press_sends_to_gate_state(mock_coordinator):
+    """Test pedestrian button press sends PEDESTRIAN_OPEN command (3) to gate_state."""
+    from custom_components.mconnect.button import MConnectLinkPedestrianButton
+    from custom_components.mconnect.cover import LINK_CMD_PEDESTRIAN_OPEN
+
+    device = MOCK_DEVICES[6]
+    entity = MConnectLinkPedestrianButton(mock_coordinator, device, "gate_state")
+
+    await entity.async_press()
+    mock_coordinator.api.send_value.assert_called_with(
+        "device007", "gate_state", LINK_CMD_PEDESTRIAN_OPEN  # 3
+    )
+
+
 # ── Light platform ───────────────────────────────────────────────────────
 
 

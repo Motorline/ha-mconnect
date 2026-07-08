@@ -122,6 +122,9 @@
       },
       "rf_button_4": {
         "name": "Gomb 4"
+      },
+      "pedestrian_open": {
+        "name": "Gyalogos nyitás"
       }
     }
   }
