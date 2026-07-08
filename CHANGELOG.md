@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 26.06.08
 
 ### Pedestrian open button for LINK gates
 
