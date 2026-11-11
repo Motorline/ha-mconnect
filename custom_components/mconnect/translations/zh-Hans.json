@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "点击链接，使用您的 MCONNECT 账户进行身份验证。可以使用电子邮件、Google、Facebook 或 Apple。"
+      },
+      "auth": {
+        "title": "等待身份验证",
+        "description": "请在 MCONNECT 网站上完成登录并选择您的家庭。"
+      },
+      "finish": {
+        "title": "已配置",
+        "description": "您的 MCONNECT 家庭已成功配置。"
+      },
+      "reauth_confirm": {
+        "title": "重新验证 MCONNECT",
+        "description": "您的 MCONNECT 会话已过期。请点击链接重新进行身份验证。"
+      }
+    },
+    "abort": {
+      "already_configured": "此家庭已配置。",
+      "auth_failed": "身份验证失败，请重试。",
+      "unknown": "发生意外错误。",
+      "reauth_successful": "重新验证成功。",
+      "token_limit_reached": "个人访问令牌数量已达上限。请在 MCONNECT 账户设置中撤销一个现有令牌。",
+      "token_revoked": "您的 Home Assistant 访问令牌已被撤销。请移除此集成后重新添加。",
+      "cannot_connect": "无法连接到 MCONNECT 服务器。请检查您的网络连接。"
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "MCONNECT 身份验证失败，请重新验证。"
+    },
+    "cannot_connect": {
+      "message": "无法连接到 MCONNECT 服务器。请检查您的网络连接。"
+    },
+    "access_denied": {
+      "message": "您目前无权访问此家庭。访问可能仅限于特定的时间或日期。"
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "控制"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "开关"
+      },
+      "brightness": {
+        "name": "亮度"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "开关"
+      },
+      "state": {
+        "name": "状态"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "锁"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "开关"
+      },
+      "level": {
+        "name": "速度"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "等级"
+      },
+      "state": {
+        "name": "状态"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "状态"
+      },
+      "state": {
+        "name": "状态"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "开关"
+      },
+      "mode": {
+        "name": "模式"
+      },
+      "level": {
+        "name": "温度"
+      }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 打开"
+      },
+      "shutter_stop": {
+        "name": "2 停止"
+      },
+      "shutter_close": {
+        "name": "3 关闭"
+      },
+      "rf_button_1": {
+        "name": "按钮 1"
+      },
+      "rf_button_2": {
+        "name": "按钮 2"
+      },
+      "rf_button_3": {
+        "name": "按钮 3"
+      },
+      "rf_button_4": {
+        "name": "按钮 4"
+      },
+      "pedestrian_open": {
+        "name": "打开行人通道"
+      }
+    }
+  }
+}

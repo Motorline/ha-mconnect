@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Fai clic sul link per autenticarti con il tuo account MCONNECT. Puoi usare email, Google, Facebook o Apple."
+      },
+      "auth": {
+        "title": "In attesa dell'autenticazione",
+        "description": "Completa l'accesso sul sito web MCONNECT e seleziona la tua casa."
+      },
+      "finish": {
+        "title": "Configurato",
+        "description": "La tua casa MCONNECT è stata configurata correttamente."
+      },
+      "reauth_confirm": {
+        "title": "Autentica di nuovo MCONNECT",
+        "description": "La tua sessione MCONNECT è scaduta. Fai clic sul link per autenticarti di nuovo."
+      }
+    },
+    "abort": {
+      "already_configured": "Questa casa è già configurata.",
+      "auth_failed": "Autenticazione non riuscita. Riprova.",
+      "unknown": "Si è verificato un errore imprevisto.",
+      "reauth_successful": "Nuova autenticazione completata.",
+      "token_limit_reached": "Hai raggiunto il numero massimo di token di accesso personali. Revoca un token esistente nelle impostazioni del tuo account MCONNECT.",
+      "token_revoked": "Il token di accesso di Home Assistant è stato revocato. Rimuovi l'integrazione e aggiungila di nuovo.",
+      "cannot_connect": "Impossibile connettersi ai server MCONNECT. Controlla la connessione a Internet."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Autenticazione con MCONNECT non riuscita. Autenticati di nuovo."
+    },
+    "cannot_connect": {
+      "message": "Impossibile connettersi ai server MCONNECT. Controlla la connessione a Internet."
+    },
+    "access_denied": {
+      "message": "Al momento non hai accesso a questa casa. L'accesso può essere limitato a determinate ore o giorni."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Controllo"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Interruttore"
+      },
+      "brightness": {
+        "name": "Luminosità"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Interruttore"
+      },
+      "state": {
+        "name": "Stato"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Serratura"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Interruttore"
+      },
+      "level": {
+        "name": "Velocità"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Livello"
+      },
+      "state": {
+        "name": "Stato"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Stato"
+      },
+      "state": {
+        "name": "Stato"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Interruttore"
+      },
+      "mode": {
+        "name": "Modalità"
+      },
+      "level": {
+        "name": "Temperatura"
+      }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Apri"
+      },
+      "shutter_stop": {
+        "name": "2 Stop"
+      },
+      "shutter_close": {
+        "name": "3 Chiudi"
+      },
+      "rf_button_1": {
+        "name": "Pulsante 1"
+      },
+      "rf_button_2": {
+        "name": "Pulsante 2"
+      },
+      "rf_button_3": {
+        "name": "Pulsante 3"
+      },
+      "rf_button_4": {
+        "name": "Pulsante 4"
+      },
+      "pedestrian_open": {
+        "name": "Apertura pedonale"
+      }
+    }
+  }
+}

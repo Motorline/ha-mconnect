@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Klikněte na odkaz a přihlaste se ke svému účtu MCONNECT. Můžete použít e-mail, Google, Facebook nebo Apple."
+      },
+      "auth": {
+        "title": "Čekání na ověření",
+        "description": "Dokončete přihlášení na webu MCONNECT a vyberte svou domácnost."
+      },
+      "finish": {
+        "title": "Nakonfigurováno",
+        "description": "Vaše domácnost MCONNECT byla úspěšně nakonfigurována."
+      },
+      "reauth_confirm": {
+        "title": "Znovu ověřit MCONNECT",
+        "description": "Vaše relace MCONNECT vypršela. Klikněte na odkaz a ověřte se znovu."
+      }
+    },
+    "abort": {
+      "already_configured": "Tato domácnost je již nakonfigurována.",
+      "auth_failed": "Ověření se nezdařilo. Zkuste to prosím znovu.",
+      "unknown": "Došlo k neočekávané chybě.",
+      "reauth_successful": "Opětovné ověření proběhlo úspěšně.",
+      "token_limit_reached": "Bylo dosaženo maximálního počtu osobních přístupových tokenů. Zrušte některý existující token v nastavení svého účtu MCONNECT.",
+      "token_revoked": "Váš přístupový token pro Home Assistant byl zrušen. Odeberte integraci a přidejte ji znovu.",
+      "cannot_connect": "Nelze se připojit k serverům MCONNECT. Zkontrolujte připojení k internetu."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Ověření u MCONNECT se nezdařilo. Ověřte se prosím znovu."
+    },
+    "cannot_connect": {
+      "message": "Nelze se připojit k serverům MCONNECT. Zkontrolujte připojení k internetu."
+    },
+    "access_denied": {
+      "message": "K této domácnosti nyní nemáte přístup. Přístup může být omezen na určité hodiny nebo dny."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Ovládání"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Spínač"
+      },
+      "brightness": {
+        "name": "Jas"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Spínač"
+      },
+      "state": {
+        "name": "Stav"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Zámek"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Spínač"
+      },
+      "level": {
+        "name": "Rychlost"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Úroveň"
+      },
+      "state": {
+        "name": "Stav"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Stav"
+      },
+      "state": {
+        "name": "Stav"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Spínač"
+      },
+      "mode": {
+        "name": "Režim"
+      },
+      "level": {
+        "name": "Teplota"
+      }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Otevřít"
+      },
+      "shutter_stop": {
+        "name": "2 Zastavit"
+      },
+      "shutter_close": {
+        "name": "3 Zavřít"
+      },
+      "rf_button_1": {
+        "name": "Tlačítko 1"
+      },
+      "rf_button_2": {
+        "name": "Tlačítko 2"
+      },
+      "rf_button_3": {
+        "name": "Tlačítko 3"
+      },
+      "rf_button_4": {
+        "name": "Tlačítko 4"
+      },
+      "pedestrian_open": {
+        "name": "Otevřít pro chodce"
+      }
+    }
+  }
+}

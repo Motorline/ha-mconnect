@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.11.11 (2026-11-11)
+
+### New languages
+
+- Czech, Italian, Simplified Chinese and Lithuanian translations, the integration now has the same 12 languages as the MCONNECT app
+
 ## 26.07.08 (2026-07-08)
 
 ### Pedestrian open button for LINK gates

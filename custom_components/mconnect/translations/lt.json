@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MCONNECT",
+        "description": "Spustelėkite nuorodą, kad prisijungtumėte prie savo MCONNECT paskyros. Galite naudoti el. paštą, Google, Facebook arba Apple."
+      },
+      "auth": {
+        "title": "Laukiama autentifikavimo",
+        "description": "Užbaikite prisijungimą MCONNECT svetainėje ir pasirinkite savo namus."
+      },
+      "finish": {
+        "title": "Sukonfigūruota",
+        "description": "Jūsų MCONNECT namai sėkmingai sukonfigūruoti."
+      },
+      "reauth_confirm": {
+        "title": "Iš naujo autentifikuoti MCONNECT",
+        "description": "Jūsų MCONNECT sesija baigėsi. Spustelėkite nuorodą, kad prisijungtumėte iš naujo."
+      }
+    },
+    "abort": {
+      "already_configured": "Šie namai jau sukonfigūruoti.",
+      "auth_failed": "Autentifikuoti nepavyko. Bandykite dar kartą.",
+      "unknown": "Įvyko netikėta klaida.",
+      "reauth_successful": "Pakartotinis autentifikavimas sėkmingas.",
+      "token_limit_reached": "Pasiektas didžiausias asmeninių prieigos raktų (token) skaičius. Atšaukite vieną esamą raktą savo MCONNECT paskyros nustatymuose.",
+      "token_revoked": "Jūsų Home Assistant prieigos raktas buvo atšauktas. Pašalinkite integraciją ir pridėkite ją iš naujo.",
+      "cannot_connect": "Nepavyko prisijungti prie MCONNECT serverių. Patikrinkite interneto ryšį."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Autentifikuoti MCONNECT nepavyko. Autentifikuokite iš naujo."
+    },
+    "cannot_connect": {
+      "message": "Nepavyko prisijungti prie MCONNECT serverių. Patikrinkite interneto ryšį."
+    },
+    "access_denied": {
+      "message": "Šiuo metu neturite prieigos prie šių namų. Prieiga gali būti ribojama tam tikromis valandomis ar dienomis."
+    }
+  },
+  "entity": {
+    "cover": {
+      "open_close": {
+        "name": "Valdymas"
+      }
+    },
+    "light": {
+      "on_off": {
+        "name": "Jungiklis"
+      },
+      "brightness": {
+        "name": "Ryškumas"
+      }
+    },
+    "switch": {
+      "on_off": {
+        "name": "Jungiklis"
+      },
+      "state": {
+        "name": "Būsena"
+      }
+    },
+    "lock": {
+      "lock_unlock": {
+        "name": "Spyna"
+      }
+    },
+    "fan": {
+      "on_off": {
+        "name": "Jungiklis"
+      },
+      "level": {
+        "name": "Greitis"
+      }
+    },
+    "sensor": {
+      "level": {
+        "name": "Lygis"
+      },
+      "state": {
+        "name": "Būsena"
+      }
+    },
+    "binary_sensor": {
+      "on_off": {
+        "name": "Būsena"
+      },
+      "state": {
+        "name": "Būsena"
+      }
+    },
+    "climate": {
+      "on_off": {
+        "name": "Jungiklis"
+      },
+      "mode": {
+        "name": "Režimas"
+      },
+      "level": {
+        "name": "Temperatūra"
+      }
+    },
+    "button": {
+      "shutter_open": {
+        "name": "1 Atidaryti"
+      },
+      "shutter_stop": {
+        "name": "2 Sustabdyti"
+      },
+      "shutter_close": {
+        "name": "3 Uždaryti"
+      },
+      "rf_button_1": {
+        "name": "Mygtukas 1"
+      },
+      "rf_button_2": {
+        "name": "Mygtukas 2"
+      },
+      "rf_button_3": {
+        "name": "Mygtukas 3"
+      },
+      "rf_button_4": {
+        "name": "Mygtukas 4"
+      },
+      "pedestrian_open": {
+        "name": "Pėsčiųjų atidarymas"
+      }
+    }
+  }
+}
