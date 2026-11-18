@@ -8,6 +8,7 @@ import pytest
 
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import instance_id
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
@@ -69,6 +70,8 @@ async def test_setup_entry_success(hass: HomeAssistant, mock_config_entry):
             await hass.config_entries.async_setup(mock_config_entry.entry_id)
 
     assert mock_config_entry.state is ConfigEntryState.LOADED
+    # MQTT client id must be unique per HA installation
+    assert mock_mqtt_cls.call_args.kwargs["instance_id"] == await instance_id.async_get(hass)
 
 
 async def test_setup_entry_auth_failed(hass: HomeAssistant, mock_config_entry):

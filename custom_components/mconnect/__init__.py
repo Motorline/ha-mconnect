@@ -9,7 +9,7 @@ from typing import Any
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
-from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import device_registry as dr, instance_id
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import MConnectApi, MConnectApiError, MConnectAuthError, MConnectTokenRevokedError, MConnectAccessError
@@ -86,10 +86,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: MConnectConfigEntry) -> 
 
     # MQTT listener
     home_id = entry.data[CONF_HOME_ID]
+    # Unique per Home Assistant installation, so two instances with the same home
+    # do not share the MQTT client id (the broker drops the older session)
+    ha_instance_id = await instance_id.async_get(hass)
     mqtt_listener: MConnectMqttListener | None = None
     try:
         mqtt_listener = MConnectMqttListener(
             home_id=home_id,
+            instance_id=ha_instance_id,
             host=MQTT_HOST,
             port=MQTT_PORT,
             use_ssl=MQTT_USE_SSL,

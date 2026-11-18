@@ -47,6 +47,13 @@ async def async_get_config_entry_diagnostics(
             ],
         }
 
+    mqtt = runtime_data.mqtt
+    mqtt_diag = {
+        "enabled": mqtt is not None,
+        "connected": mqtt.connected if mqtt else False,
+        "client_id": _mask_client_id(mqtt.client_id) if mqtt else None,
+    }
+
     scenes_diag = {}
     for scene_id, scene in coordinator.data.scenes.items():
         scenes_diag[scene_id] = {
@@ -68,7 +75,18 @@ async def async_get_config_entry_diagnostics(
             },
             "devices": devices_diag,
             "scenes": scenes_diag,
-            "mqtt_connected": runtime_data.mqtt is not None,
+            "mqtt": mqtt_diag,
         },
         TO_REDACT,
     )
+
+
+def _mask_client_id(client_id: str) -> str:
+    """Hide the home id part of the client id, keep the instance part.
+
+    Format: ha-mc-<home_id[:8]>-<instance_id[:8]>
+    """
+    parts = client_id.split("-")
+    if len(parts) == 4:
+        parts[2] = "*" * len(parts[2])
+    return "-".join(parts)

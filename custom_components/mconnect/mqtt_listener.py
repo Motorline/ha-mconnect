@@ -6,11 +6,17 @@ import json
 import logging
 import ssl
 import threading
+import time
 from typing import Any, Callable
 
 import paho.mqtt.client as paho_mqtt
 
 _LOGGER = logging.getLogger(__name__)
+
+# A session shorter than this counts as a short session
+_SHORT_SESSION_SECONDS = 30
+# Consecutive short sessions before warning about a duplicate client id
+_SHORT_SESSION_LIMIT = 3
 
 # Callback type: (device_id, value_id, value_payload)
 StateCallback = Callable[[str, str, dict[str, Any]], None]
@@ -24,12 +30,15 @@ class MConnectMqttListener:
     def __init__(
         self,
         home_id: str,
+        instance_id: str,
         host: str,
         port: int,
         use_ssl: bool,
         get_token: Callable[[], str | None],
     ) -> None:
         self._home_id = home_id
+        # 23 chars max, the minimum length MQTT 3.1.1 brokers must accept
+        self._client_id = f"ha-mc-{home_id[:8]}-{instance_id[:8]}"
         self._host = host
         self._port = port
         self._use_ssl = use_ssl
@@ -41,6 +50,11 @@ class MConnectMqttListener:
         self._client: paho_mqtt.Client | None = None
         self._connected = False
         self._stop_event = threading.Event()
+
+        # Duplicate client id detection
+        self._connected_at: float | None = None
+        self._short_sessions = 0
+        self._duplicate_warned = False
 
     # ── Public API ───────────────────────────────────────────────────────
 
@@ -58,6 +72,10 @@ class MConnectMqttListener:
     def connected(self) -> bool:
         return self._connected
 
+    @property
+    def client_id(self) -> str:
+        return self._client_id
+
     def start(self) -> None:
         """Connect to the MQTT broker in a background thread."""
         if self._client is not None:
@@ -68,9 +86,8 @@ class MConnectMqttListener:
             _LOGGER.warning("No MQTT token available, skipping MQTT connection")
             return
 
-        client_id = f"ha-mconnect-{self._home_id[:8]}"
         self._client = paho_mqtt.Client(
-            client_id=client_id,
+            client_id=self._client_id,
             protocol=paho_mqtt.MQTTv311,
         )
 
@@ -136,6 +153,7 @@ class MConnectMqttListener:
     ) -> None:
         if rc == 0:
             self._connected = True
+            self._connected_at = time.monotonic()
             _LOGGER.info("MQTT connected, subscribing to home topics")
             self._subscribe_topics(client)
         else:
@@ -163,9 +181,40 @@ class MConnectMqttListener:
     ) -> None:
         self._connected = False
         if rc != 0 and not self._stop_event.is_set():
-            _LOGGER.warning("MQTT unexpected disconnect (rc=%s), updating credentials", rc)
+            _LOGGER.warning(
+                "MQTT unexpected disconnect (rc=%s (%s)), updating credentials",
+                rc,
+                paho_mqtt.error_string(rc),
+            )
+            self._check_duplicate_client_id()
             # Refresh token before paho's auto-reconnect fires
             self._update_credentials()
+        self._connected_at = None
+
+    def _check_duplicate_client_id(self) -> None:
+        """Warn once when sessions keep dropping right after connecting.
+
+        The broker drops the older session when another client connects with the
+        same client id, so two instances keep kicking each other out in a loop.
+        """
+        if self._connected_at is None:
+            return
+        duration = time.monotonic() - self._connected_at
+        if duration >= _SHORT_SESSION_SECONDS:
+            # Stable session, start counting again
+            self._short_sessions = 0
+            self._duplicate_warned = False
+            return
+        self._short_sessions += 1
+        if self._short_sessions >= _SHORT_SESSION_LIMIT and not self._duplicate_warned:
+            self._duplicate_warned = True
+            _LOGGER.warning(
+                "MQTT connection for client id %s keeps dropping right after "
+                "connecting. Another Home Assistant instance with the same "
+                "instance ID (for example a restored backup) may be connected "
+                "to this MCONNECT home",
+                self._client_id,
+            )
 
     def _on_message(
         self,

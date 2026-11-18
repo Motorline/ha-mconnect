@@ -21,6 +21,7 @@ def listener(get_token):
     """Create an MQTT listener instance."""
     return MConnectMqttListener(
         home_id="home123",
+        instance_id="abcdef0123456789",
         host="mqtt.test.com",
         port=8884,
         use_ssl=True,
@@ -48,12 +49,31 @@ def test_start(mock_client_cls, listener, get_token):
 
     listener.start()
 
+    assert mock_client_cls.call_args.kwargs["client_id"] == "ha-mc-home123-abcdef01"
     mock_client.username_pw_set.assert_called_once_with(
         username="mock_jwt_token", password="ha"
     )
     mock_client.tls_set.assert_called_once()
     mock_client.connect_async.assert_called_once_with("mqtt.test.com", 8884, keepalive=60)
     mock_client.loop_start.assert_called_once()
+
+
+def test_client_id_differs_per_instance(get_token):
+    """Test the same home on two HA instances gets two client ids."""
+    ids = {
+        MConnectMqttListener(
+            home_id="6298bdf3aaaa",
+            instance_id=instance,
+            host="mqtt.test.com",
+            port=8884,
+            use_ssl=True,
+            get_token=get_token,
+        ).client_id
+        for instance in ("11111111ffff", "22222222ffff")
+    }
+
+    assert ids == {"ha-mc-6298bdf3-11111111", "ha-mc-6298bdf3-22222222"}
+    assert all(len(i) <= 23 for i in ids)
 
 
 @patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
@@ -185,6 +205,82 @@ def test_on_disconnect_clean(mock_client_cls, listener):
 
     # Should not have called username_pw_set again
     assert mock_client.username_pw_set.call_count == initial_call_count
+
+
+@patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
+def test_disconnect_log_includes_reason(mock_client_cls, listener, caplog):
+    """Test the disconnect warning explains the rc code."""
+    mock_client_cls.return_value = MagicMock()
+    listener.start()
+
+    listener._on_disconnect(listener._client, None, 7)
+
+    assert "rc=7 (The connection was lost.)" in caplog.text
+
+
+# ── Duplicate client id detection ────────────────────────────────────────
+
+DUPLICATE_MSG = "keeps dropping right after connecting"
+
+
+def _run_sessions(listener, durations):
+    """Simulate connect/disconnect cycles with the given session durations."""
+    now = 1000.0
+    with patch("custom_components.mconnect.mqtt_listener.time.monotonic") as mono:
+        for duration in durations:
+            mono.return_value = now
+            listener._on_connect(listener._client, None, {}, 0)
+            now += duration
+            mono.return_value = now
+            listener._on_disconnect(listener._client, None, 7)
+            now += 5
+
+
+@patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
+def test_duplicate_warning_after_short_sessions(mock_client_cls, listener, caplog):
+    """Test three short sessions in a row log the duplicate client id warning."""
+    mock_client_cls.return_value = MagicMock()
+    listener.start()
+
+    _run_sessions(listener, [5, 5])
+    assert DUPLICATE_MSG not in caplog.text
+
+    _run_sessions(listener, [5])
+    assert DUPLICATE_MSG in caplog.text
+    assert "ha-mc-home123-abcdef01" in caplog.text
+
+
+@patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
+def test_duplicate_warning_only_once(mock_client_cls, listener, caplog):
+    """Test the duplicate warning is logged only once while the loop goes on."""
+    mock_client_cls.return_value = MagicMock()
+    listener.start()
+
+    _run_sessions(listener, [5] * 6)
+
+    assert caplog.text.count(DUPLICATE_MSG) == 1
+
+
+@patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
+def test_duplicate_counter_resets_after_stable_session(mock_client_cls, listener, caplog):
+    """Test a stable session resets the short session counter."""
+    mock_client_cls.return_value = MagicMock()
+    listener.start()
+
+    _run_sessions(listener, [5, 5, 120, 5, 5])
+
+    assert DUPLICATE_MSG not in caplog.text
+
+
+@patch("custom_components.mconnect.mqtt_listener.paho_mqtt.Client")
+def test_duplicate_warning_again_after_stable_session(mock_client_cls, listener, caplog):
+    """Test the warning can fire again after the connection was stable."""
+    mock_client_cls.return_value = MagicMock()
+    listener.start()
+
+    _run_sessions(listener, [5, 5, 5, 120, 5, 5, 5])
+
+    assert caplog.text.count(DUPLICATE_MSG) == 2
 
 
 # ── Message routing ──────────────────────────────────────────────────────

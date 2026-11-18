@@ -1,5 +1,13 @@
 # Changelog
 
+## 26.11.18 (2026-11-18)
+
+### Fix MQTT reconnect loop with multiple Home Assistant instances
+
+- The MQTT client id now includes the Home Assistant instance ID, so two instances with the same MCONNECT home no longer disconnect each other every few seconds (`MQTT unexpected disconnect (rc=7)`)
+- When the connection keeps dropping right after connecting, a single warning explains that another instance may be using the same client id
+- Disconnect logs show the reason next to the code, and diagnostics show the real MQTT connection state and the client id
+
 ## 26.11.11 (2026-11-11)
 
 ### New languages

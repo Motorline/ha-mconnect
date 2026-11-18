@@ -15,6 +15,56 @@ from custom_components.mconnect.coordinator import MConnectData
 from .conftest import MOCK_DEVICES, MOCK_ENTRY_DATA, MOCK_HOME_ID, MOCK_SCENES
 
 
+def _make_entry(mqtt):
+    """Build a mock entry with coordinator data and the given MQTT listener."""
+    data = MConnectData()
+    for d in MOCK_DEVICES:
+        data.devices[str(d.get("_id") or d.get("id"))] = d
+    for s in MOCK_SCENES:
+        data.scenes[str(s.get("_id") or s.get("id"))] = s
+
+    mock_coord = MagicMock()
+    mock_coord.data = data
+    mock_coord.last_update_success = True
+
+    mock_entry = MagicMock()
+    mock_entry.title = "MCONNECT - Casa"
+    mock_entry.data = MOCK_ENTRY_DATA
+    mock_entry.version = 1
+    mock_entry.runtime_data = MagicMock(coordinator=mock_coord, mqtt=mqtt)
+    return mock_entry
+
+
+async def test_diagnostics_mqtt_state(hass):
+    """Test diagnostics show the real MQTT state and mask the home id in the client id."""
+    mqtt = MagicMock(connected=True, client_id="ha-mc-6298bdf3-a1b2c3d4")
+
+    result = await async_get_config_entry_diagnostics(hass, _make_entry(mqtt))
+
+    assert result["mqtt"] == {
+        "enabled": True,
+        "connected": True,
+        "client_id": "ha-mc-********-a1b2c3d4",
+    }
+
+
+async def test_diagnostics_mqtt_disconnected(hass):
+    """Test diagnostics report a listener that exists but is not connected."""
+    mqtt = MagicMock(connected=False, client_id="ha-mc-6298bdf3-a1b2c3d4")
+
+    result = await async_get_config_entry_diagnostics(hass, _make_entry(mqtt))
+
+    assert result["mqtt"]["enabled"] is True
+    assert result["mqtt"]["connected"] is False
+
+
+async def test_diagnostics_without_mqtt(hass):
+    """Test diagnostics when the MQTT listener failed to set up."""
+    result = await async_get_config_entry_diagnostics(hass, _make_entry(None))
+
+    assert result["mqtt"] == {"enabled": False, "connected": False, "client_id": None}
+
+
 async def test_diagnostics_redacts_sensitive_data(hass):
     """Test diagnostics redacts tokens and personal info."""
     # Build mock coordinator data
